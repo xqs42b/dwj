@@ -11,18 +11,14 @@ from sqlalchemy.orm import sessionmaker
 exec_path = os.path.dirname(__file__)
 config_name = "config.py"
 config_path = f"{exec_path}/{config_name}"
-print(config_path)
+
 
 app = Sanic("myApp")
 app.update_config(Config)
-print(app.config.A)
-print(app.config.DB_SETTINGS)
 
 
 _base_model_session_ctx = ContextVar("session")
-
-
-bind = create_async_engine(Config.DB_SETTINGS, echo=True, pool_size=500, max_overflow=1000)
+bind = create_async_engine(Config.DB_CONN_STR, echo=True, pool_size=20, max_overflow=50)
 _sessionmaker = sessionmaker(bind, class_=AsyncSession, expire_on_commit=False)
 
 
@@ -50,3 +46,7 @@ async def hi(request):
     print(dir(request))
     print(request.id)
     return text("hi china")
+
+
+if __name__ == "__main__":
+    app.run(debug=Config.DEBUG, auto_reload=Config.AUTO_RELOAD)
