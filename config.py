@@ -1,17 +1,16 @@
 class Config:
     # 数据库配置
-    DB_SETTINGS = {
-        "DB_HOST": "192.168.1.123",
-        "DB_NAME": "wj",
-        "DB_USER": "xqs"
-    }
-    DB_CONN_STR = "postgresql+psycopg2://username:password@localhost/dbname"
+    DB_HOST = "192.168.1.123"
+    DB_USER = "xqs"
+    DB_PASSWORD = "123456"
+    DB_NAME = "dwj"
+    DB_CONN_STR = f"postgresql+asyncpg://{DB_HOST}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
 
     # REDIS数据库连接配置
-    REDIS_SETTINGS = {
-
-    }
-    REDIS_CONN_STR = "redis://{CONFIG.REDIS_HOST}:{CONFIG.REDIS_PORT}/{CONFIG.REDIS_DB}"
+    REDIS_HOST = "192.168.1.123"
+    REDIS_PORT = "6379"
+    REDIS_DB = 0
+    REDIS_CONN_STR = f"redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_DB}"
 
     # DEBUG配置
     DEBUG = True
