@@ -1,5 +1,4 @@
 import datetime
-from uuid import uuid4
 from apps.BaseModel import BaseModel, db
 
 
@@ -13,4 +12,4 @@ class UserModel(BaseModel):
     head = db.Column(db.String(320), comment='用户头像')
     birthday = db.Column(db.Date, defautl=datetime.date.today(), comment="用户生日")
     profile = db.Column(db.String(120), comment="简介")
-    uid = db.Column(db.String(36), comment="用户的uid")
+    uid = db.Column(db.String(32), comment="用户的uid")
