@@ -33,7 +33,7 @@ async def inject_session(request):
     request.ctx.session_ctx_token = _base_model_session_ctx.set(request.ctx.session)
 
 
-@app.middleware("request")
+@app.middleware("response")
 async def close_session(request, response):
     if hasattr(request.ctx, "session_ctx_token"):
         _base_model_session_ctx.reset(request.ctx.session_ctx_token)

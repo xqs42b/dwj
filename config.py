@@ -5,7 +5,7 @@ class Config:
     DB_USER = "xqs"
     DB_PASSWORD = "123456"
     DB_NAME = "dwj"
-    DB_CONN_STR = f"postgresql+asyncpg://{DB_HOST}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+    DB_CONN_STR = f"postgresql+asyncpg://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
     # REDIS数据库连接配置
     REDIS_HOST = "192.168.138.128"
